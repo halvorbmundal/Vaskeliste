@@ -25,7 +25,7 @@ public class CleaningTaskController {
     @PostMapping(value = "/addtosection/{sectionId}")
     public CleaningTask addTaskToSection(@RequestBody CleaningTask task, @PathVariable long sectionId){
         Assert.notNull(task.name, "Oppgaven mangler navn");
-        task.setSection(sectionRepository.findCleaningSectionById(sectionId));
+        //task.setSection(sectionRepository.findById(sectionId));
         return taskRepository.save(task);
     }
 
@@ -34,10 +34,10 @@ public class CleaningTaskController {
         taskRepository.deleteById(taskId);
     }
 
-    @PutMapping(value="/completetask/{taskId}")
-    public boolean updateTaskCompletion(@PathVariable long taskId){
+    @PutMapping(value="/updatetaskcompletion/{taskId}")
+    public boolean updateTaskCompletion(@RequestBody CleaningTask taskData, @PathVariable long taskId){
         CleaningTask task = taskRepository.findCleaningTaskById(taskId);
-        task.setComplete(!task.isComplete);
+        task.setComplete(!taskData.isComplete);
         taskRepository.save(task);
         return task.isComplete;
     }

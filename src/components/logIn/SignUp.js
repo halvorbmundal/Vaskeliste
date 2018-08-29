@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import {FieldGroup} from './common';
-import {Button} from 'react-bootstrap';
+import React from 'react';
+import {FieldGroup} from '../common/common';
+import {Button} from 'reactstrap';
+import {signUp} from '../../api';
 
-class SignUp extends Component {
+class SignUp extends React.Component {
   validateInput = (username, password) => {
     return username.length > 5 && password.length > 7;
   };
@@ -19,7 +20,20 @@ class SignUp extends Component {
     const username = event.target.elements.formControlsUsername.value;
     const password1 = event.target.elements.formControlsPassword1.value;
     const password2 = event.target.elements.formControlsPassword2.value;
-    console.log("hei");
+    if (password1 === password2) {
+      if (this.validateInput(username, password1)){
+        signUp(username, password1);
+        this.props.close();
+        window.alert("User created");
+      }
+
+      else{
+        this.invalidInput();
+      }
+    }
+    else{
+      window.alert("Passwords does not match")
+    }
   };
 
   render() {

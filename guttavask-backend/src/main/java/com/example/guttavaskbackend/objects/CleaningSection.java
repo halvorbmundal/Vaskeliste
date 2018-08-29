@@ -2,10 +2,14 @@ package com.example.guttavaskbackend.objects;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Data
+@ToString(exclude = { "cleaningTasks" })
 @Builder
 @Entity
 @DynamicUpdate
@@ -27,4 +31,11 @@ public class CleaningSection {
     @ManyToOne
     @JoinColumn
     public ApplicationUser responsibleUser;
+
+    @OneToMany(
+            mappedBy = "section",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    public List<CleaningTask> cleaningTasks;
 }

@@ -1,7 +1,9 @@
-import { combineReducers } from "redux"
+import { combineReducers } from "redux";
 
-import logIn from "./logInReducer"
+import user from "./userReducer";
+import cleaningListsReducer from "./cleaningListsReducer"
 
-export default combineReducers({
-  logIn,
-})
+export const rootReducer = combineReducers({
+  cleaningListsReducer,
+  user
+});

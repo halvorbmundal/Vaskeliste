@@ -1,17 +1,21 @@
 import React, { Component } from "react";
-import { LogInBox, CleaningChecklist } from "./components";
 import "./App.css";
-import { connect } from "react-redux";
+import {connect} from 'react-redux';
+import {Home, LogInBox} from './components';
 
 class App extends Component {
   render() {
-    let isLoggedIn = this.props.logIn;
-    return <div>{isLoggedIn ? <CleaningChecklist /> : <LogInBox />}</div>;
+    return (
+      <div>{this.props.loggedIn ? <Home /> : <LogInBox />}</div>
+    );
   }
 }
 
-export default connect(store => {
+const mapStateToProps = state => {
+  console.log(state);
   return {
-    logIn: store.loggedIn
+    loggedIn: state.user.loggedIn
   };
-})(App);
+};
+
+export default connect(mapStateToProps)(App);

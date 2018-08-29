@@ -1,13 +1,16 @@
 package com.example.guttavaskbackend.objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
+import lombok.ToString;
 import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
+
 @Data
-@Getter
+@ToString(exclude = { "section" })
 @Builder
 @Entity
 @DynamicUpdate
@@ -26,7 +29,8 @@ public class CleaningTask {
     public boolean isComplete;
 
     @ManyToOne
-    @JoinColumn(nullable=false)
+    @JoinColumn(name = "section_id")
+    @JsonIgnore
     public CleaningSection section;
 
 }

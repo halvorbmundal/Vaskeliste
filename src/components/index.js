@@ -1,6 +1,9 @@
-import CleaningChecklist from './CleaningChecklist';
-import CleaningSection from './CleaningSection';
-import CleaningTask from './CleaningTask';
-import LogInBox from './LogIn/LogInBox';
+import CleaningChecklist from './home/CleaningChecklist';
+import CleaningSection from './home/CleaningSection';
+import CleaningTask from './home/CleaningTask';
+import Home from './home/Home';
+import LogInBox from './logIn/LogInBox';
 
-export { CleaningChecklist, CleaningSection, CleaningTask, LogInBox };
+
+
+export { CleaningChecklist, CleaningSection, CleaningTask, Home, LogInBox };

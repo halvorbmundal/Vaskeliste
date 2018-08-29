@@ -24,6 +24,11 @@ public class ApplicationUser {
     @Column
     private String password;
 
+    @Column
+    private boolean isCollectiveAdmin;
+
+    @Column boolean isAcceptedInCollective;
+
     @ManyToOne
     @JoinColumn
     public Collective collective;
