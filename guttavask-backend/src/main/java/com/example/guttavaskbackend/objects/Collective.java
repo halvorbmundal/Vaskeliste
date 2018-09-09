@@ -19,4 +19,7 @@ public class Collective {
 
     @Column
     public String name;
+
+    @Column(columnDefinition="int default 0")
+    public int counter = 0;
 }

@@ -1,5 +1,5 @@
 import {Button, Modal, ModalBody, ModalHeader} from 'reactstrap';
-import {FieldGroup} from './common/common';
+import {FieldGroup} from './common';
 import React from 'react';
 
 const JoinCollective = ({
@@ -8,7 +8,7 @@ const JoinCollective = ({
   setHomeState,
   joinCollective
 }) => (
-  <Modal animation={false} isOpen={!hasCollective}>
+  <Modal isOpen={!hasCollective}>
     <ModalHeader charCode={"Log out"} toggle={() => isLoggedIn(false)}>
         Join a collective
     </ModalHeader>

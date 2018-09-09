@@ -5,13 +5,21 @@ export default function userReducer(
     collective: undefined,
     username: undefined,
     isAccepted: true,
-    isCollectiveAdmin: false
+    isCollectiveAdmin: false,
+    requests: [],
+    usersInCollective: []
   },
   action
 ) {
   switch (action.type) {
     case "IS_LOGGED_IN":
       state = { ...state, loggedIn: action.payload };
+      break;
+    case "SET_REQUESTS":
+      state = { ...state, requests: action.payload };
+      break;
+    case "SET_USERS_IN_COLLECTIVE":
+      state = { ...state, usersInCollective: action.payload };
       break;
     case "USER_DATA":
       state = {

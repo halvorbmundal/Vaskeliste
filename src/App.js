@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import {connect} from 'react-redux';
-import {Home, LogInBox} from './components';
+import Home from './components/Home';
+import LogInBox from './components/logIn/LogInBox';
 
 class App extends Component {
   render() {

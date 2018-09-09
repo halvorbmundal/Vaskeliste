@@ -1,31 +1,28 @@
 import axios from "axios";
 const hosturl = "http://localhost:8080/";
 
-function get(url) {
-  let config = {
+function getConfig() {
+  return {
     headers: {
       authorization: localStorage.getItem("id_token")
     }
   };
-  return axios.get(url, config);
+}
+
+function get(url) {
+  return axios.get(url, getConfig());
 }
 
 function put(url, params) {
-  let config = {
-    headers: {
-      authorization: localStorage.getItem("id_token")
-    }
-  };
-  return axios.put(url, params, config);
+  return axios.put(url, params, getConfig());
 }
 
 function post(url, params) {
-  let config = {
-    headers: {
-      authorization: localStorage.getItem("id_token")
-    }
-  };
-  return axios.post(url, params, config);
+  return axios.post(url, params, getConfig());
+}
+
+function axiosDelete(url) {
+  return axios.delete(url, getConfig());
 }
 
 export function logIn(username, password) {
@@ -78,10 +75,52 @@ export function getSections() {
 }
 
 export function setTaskComplete(isComplete, taskId) {
-  const url = hosturl + "task/updatetaskcompletion/" + taskId;
-  console.log(taskId);
-  console.log(isComplete);
+  const url = hosturl + "tasks/updatetaskcompletion" + taskId;
   return put(url, {
-    isComplete: isComplete,
+    isComplete: isComplete
   });
+}
+
+export function addSection(name) {
+  const url = hosturl + "sections/add";
+  return post(url, {
+    name
+  });
+}
+
+export function addTask(name, sectionId) {
+  const url = hosturl + "tasks/addtosection/" + sectionId;
+  return post(url, {
+    name
+  });
+}
+
+export function deleteSection(sectionId) {
+  const url = hosturl + "sections/delete/" + sectionId;
+  return axiosDelete(url);
+}
+
+export function deleteTask(taskId) {
+  const url = hosturl + "tasks/delete/" + taskId;
+  return axiosDelete(url);
+}
+
+export function getPendingRequests() {
+  const url = hosturl + "user/getpendingrequests";
+  return get(url);
+}
+
+export function removeRequest(userId) {
+  const url = hosturl + "user/removerequest/" + userId;
+  return put(url);
+}
+
+export function acceptRequest(userId) {
+  const url = hosturl + "user/acceptrequest/" + userId;
+  return put(url);
+}
+
+export function getUsersInCollective(collectiveName) {
+  const url = hosturl + "collective/acceptedusers/" + collectiveName;
+  return get(url);
 }

@@ -1,6 +1,7 @@
 package com.example.guttavaskbackend.controllers;
 
 import com.example.guttavaskbackend.objects.ApplicationUser;
+import com.example.guttavaskbackend.objects.CleaningSection;
 import com.example.guttavaskbackend.objects.Collective;
 import com.example.guttavaskbackend.repositories.CollectiveRepository;
 import com.example.guttavaskbackend.repositories.UsersRepository;
@@ -12,7 +13,7 @@ import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import javax.ws.rs.NotFoundException;
+import java.util.List;
 
 
 @RestController
@@ -72,7 +73,41 @@ public class UserController {
         return user;
     }
 
+    @GetMapping("/getpendingrequests")
+    public List<ApplicationUser> getPendingRequest(){
+        ApplicationUser user = this.getUser();
+        Assert.isTrue(user.isCollectiveAdmin(), "User is not the colletive admin");
+        return usersRepository.findAllUsersInCollective(user.getCollective().getId());
+    }
+
+    @PutMapping("/removerequest/{userId}")
+    public void removeRequest(@PathVariable long userId){
+        ApplicationUser admin = this.getUser();
+        Assert.isTrue(admin.isCollectiveAdmin(), "User is not the colletive admin");
+        ApplicationUser user = usersRepository.findById(userId);
+        Assert.isTrue(admin.getCollective().equals(user.getCollective()), "Not the same collective");
+        user.setCollective(null);
+        usersRepository.save(user);
+    }
+
+    @PutMapping("/acceptrequest/{userId}")
+    public ApplicationUser acceptRequest(@PathVariable long userId){
+        ApplicationUser user = usersRepository.findById(userId);
+        this.removeRequest(userId);
+        user.setCollective(this.getUser().getCollective());
+        user.setAcceptedInCollective(true);
+        return user;
+    }
+
     protected ApplicationUser getUser(){
         return usersRepository.findByUsername((String) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
+
+    protected boolean isUserPartOfCollective(Collective collective){
+        ApplicationUser user = this.getUser();
+        Collective userCollective = user.getCollective();
+        return userCollective.getName().equals(userCollective.getName()) && user.isAcceptedInCollective();
+    }
+
+
 }

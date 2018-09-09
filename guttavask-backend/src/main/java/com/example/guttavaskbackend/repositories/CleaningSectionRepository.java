@@ -10,4 +10,6 @@ public interface CleaningSectionRepository extends CrudRepository<CleaningSectio
     ArrayList<CleaningSection> findAllByCollective(Collective collective);
 
     CleaningSection findById(long id);
+
+
 }

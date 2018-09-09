@@ -8,7 +8,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  min-height: 80vh;
   flex-direction: column;
 }
 
@@ -57,9 +57,14 @@ body {
   flex-direction: row;
 }
 
+button{
+  cursor: pointer;
+}
+
 @media {
   .log-in-box{
     min-width: 270px;
     min-height: 300px;
   }
 }
+
