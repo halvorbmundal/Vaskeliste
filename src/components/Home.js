@@ -1,16 +1,16 @@
-import React from "react";
-import * as api from "../api/index";
-import { bindActionCreators } from "redux";
-import * as userActions from "../actions/userActions";
-import connect from "react-redux/es/connect/connect";
-import CreateCollective from "./common/CreateCollective";
-import JoinCollective from "./common/JoinCollective";
-import AppNavbar from "./common/Navbar";
-import CleaningChecklist from "./cleaningLists/CleaningChecklists";
-import { Button } from "reactstrap";
-import { logOut } from "./common/common";
-import JoinCollectiveRequest from "./common/JoinCollectiveRequest";
-import * as cloneDeep from "lodash/cloneDeep";
+import React from 'react';
+import * as api from '../api/index';
+import { bindActionCreators } from 'redux';
+import * as userActions from '../actions/userActions';
+import connect from 'react-redux/es/connect/connect';
+import CreateCollective from './common/CreateCollective';
+import JoinCollective from './common/JoinCollective';
+import AppNavbar from './common/Navbar';
+import CleaningChecklist from './cleaningLists/CleaningChecklists';
+import { Button } from 'reactstrap';
+import { logOut } from './common/common';
+import JoinCollectiveRequest from './common/JoinCollectiveRequest';
+import * as cloneDeep from 'lodash/cloneDeep';
 
 class Home extends React.Component {
   constructor(props) {
@@ -89,7 +89,6 @@ class Home extends React.Component {
               joinCollective={this.joinCollective}
             />
           )}
-          {console.log(this.props.user.requests[0])}
           {this.props.user.requests.length > 0 ? (
             <JoinCollectiveRequest
               hasRequests={this.props.user.requests.length > 0}
@@ -101,7 +100,7 @@ class Home extends React.Component {
       );
     } else {
       return (
-        <div className={"center-center"}>
+        <div className={'center-center'}>
           Du er ikke akseptert i kollektivet enda. Vennligst vent til
           administratoren av kollektivet legger deg til.
           <Button onClick={() => logOut(this.props.actions.isLoggedIn)}>

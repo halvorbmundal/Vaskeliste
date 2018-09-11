@@ -1,10 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
-import {bindActionCreators} from 'redux';
-import {Button, Modal, ModalBody, ModalHeader} from 'reactstrap';
-import {logIn} from '../../api';
-import {FieldGroup} from '../common/common';
+import { bindActionCreators } from 'redux';
+import { Button, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { logIn } from '../../api';
+import { FieldGroup } from '../common/common';
 import SignUp from './SignUp';
 
 class LogInBox extends React.Component {
@@ -16,7 +16,7 @@ class LogInBox extends React.Component {
     };
   }
   handleClose = () => {
-    this.setState({modal: false})
+    this.setState({ modal: false });
   };
 
   toggle = () => {
@@ -29,10 +29,10 @@ class LogInBox extends React.Component {
     const password = event.target.elements.formControlsPassword.value;
     logIn(username, password)
       .then(response => {
-        localStorage.setItem("id_token", response.headers.authorization);
+        localStorage.setItem('id_token', response.headers.authorization);
         this.props.actions.isLoggedIn(true);
       })
-      .catch(() => window.alert("Wrong username or password."));
+      .catch(() => window.alert('Wrong username or password.'));
   };
 
   isLoggedIn = () => {
@@ -47,19 +47,19 @@ class LogInBox extends React.Component {
           <h1>Login:</h1>
           <form onSubmit={this.logIn}>
             {FieldGroup({
-              id: "formControlsUsername",
-              type: "username",
-              label: "Username",
-              placeholder: "Enter username"
+              id: 'formControlsUsername',
+              type: 'username',
+              label: 'Username',
+              placeholder: 'Enter username'
             })}
             {FieldGroup({
-              id: "formControlsPassword",
-              label: "Password",
-              type: "password",
-              placeholder: "Enter password"
+              id: 'formControlsPassword',
+              label: 'Password',
+              type: 'password',
+              placeholder: 'Enter password'
             })}
-            <div className={"split"}>
-              <a onClick={this.toggle} style={{ cursor: "pointer" }}>
+            <div className={'split'}>
+              <a onClick={this.toggle} style={{ cursor: 'pointer' }}>
                 Create account
               </a>
               <a> </a>
@@ -67,6 +67,8 @@ class LogInBox extends React.Component {
             </div>
           </form>
         </div>
+
+        <p>Dette er en nettisde for å for å dele vaskeoppgaver i et kollektiv</p>
 
         <Modal
           animation={false}

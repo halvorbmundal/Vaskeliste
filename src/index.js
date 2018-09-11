@@ -14,6 +14,7 @@ import {rootReducer} from './reducers';
 const store = createStore(rootReducer);
 
 isLoggedIn().then(res => {
+  console.log(res)
   store.dispatch(logInActions.isLoggedIn(res));
 });
 
