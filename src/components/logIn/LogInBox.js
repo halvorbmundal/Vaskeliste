@@ -29,6 +29,7 @@ class LogInBox extends React.Component {
     const password = event.target.elements.formControlsPassword.value;
     logIn(username, password)
       .then(response => {
+        console.log("auth", response);
         localStorage.setItem('id_token', response.headers.authorization);
         this.props.actions.isLoggedIn(true);
       })
