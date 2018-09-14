@@ -33,13 +33,14 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public void signUp(@RequestBody ApplicationUser user) {
+    public String signUp(@RequestBody ApplicationUser user) {
         if (usersRepository.findByUsername(user.getUsername()) == null) {
             Assert.notNull(user.getUsername(), "No username");
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             user.setAcceptedInCollective(false);
             user.setCollectiveAdmin(false);
             usersRepository.save(user);
+            return "User created";
         }
         else{
             throw new IllegalInputException("Username already exists");
@@ -64,6 +65,7 @@ public class UserController {
 
     @GetMapping("/isloggedin")
     public boolean isLoggedIn(){
+        System.out.println(this.getUser());
         return true;
     }
 

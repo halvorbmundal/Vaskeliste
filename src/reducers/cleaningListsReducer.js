@@ -1,4 +1,4 @@
-import * as cloneDeep from "lodash/cloneDeep";
+import * as cloneDeep from 'lodash/cloneDeep';
 
 export default function cleaningLists(
   state = {
@@ -8,19 +8,19 @@ export default function cleaningLists(
   action
 ) {
   switch (action.type) {
-    case "SET_CLEANINGLIST":
+    case 'SET_CLEANINGLIST':
       state = { ...state, cleaningLists: action.payload };
       break;
-    case "SET_IS_MODIFYING":
+    case 'SET_IS_MODIFYING':
       state = { ...state, isModifying: action.payload };
       break;
-    case "ADD_SECTION":
+    case 'ADD_SECTION':
       state = {
         ...state,
         cleaningLists: addSection(state.cleaningLists, action.payload)
       };
       break;
-    case "ADD_TASK":
+    case 'ADD_TASK':
       state = {
         ...state,
         cleaningLists: addTask(
@@ -30,16 +30,13 @@ export default function cleaningLists(
         )
       };
       break;
-    case "DELETE_SECTION":
+    case 'DELETE_SECTION':
       state = {
         ...state,
-        cleaningLists: deleteSection(
-          state.cleaningLists,
-          action.payload
-        )
+        cleaningLists: deleteSection(state.cleaningLists, action.payload)
       };
       break;
-    case "DELETE_TASK":
+    case 'DELETE_TASK':
       state = {
         ...state,
         cleaningLists: deleteTask(
@@ -49,7 +46,7 @@ export default function cleaningLists(
         )
       };
       break;
-    case "CHECK_TASK":
+    case 'CHECK_TASK':
       state = {
         ...state,
         cleaningLists: updateCheckedTask(
