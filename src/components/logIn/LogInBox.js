@@ -29,7 +29,7 @@ class LogInBox extends React.Component {
     const password = event.target.elements.formControlsPassword.value;
     logIn(username, password)
       .then(response => {
-        console.log("auth", response);
+        console.log('auth', response);
         localStorage.setItem('id_token', response.headers.authorization);
         this.props.actions.isLoggedIn(true);
       })
@@ -44,8 +44,12 @@ class LogInBox extends React.Component {
   render() {
     return (
       <div className="center-center">
+        <h1 className={'padding-top'}>Vaskelista</h1>
+        <p className={'padding-bottom'}>
+          En nettisde for å for å dele vaskeoppgaver i et kollektiv.
+        </p>
+
         <div className="log-in-box">
-          <h1>Login:</h1>
           <form onSubmit={this.logIn}>
             {FieldGroup({
               id: 'formControlsUsername',
@@ -68,8 +72,6 @@ class LogInBox extends React.Component {
             </div>
           </form>
         </div>
-
-        <p>Dette er en nettisde for å for å dele vaskeoppgaver i et kollektiv.</p>
 
         <Modal
           animation={false}

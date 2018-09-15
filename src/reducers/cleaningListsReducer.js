@@ -2,7 +2,7 @@ import * as cloneDeep from 'lodash/cloneDeep';
 
 export default function cleaningLists(
   state = {
-    cleaningLists: undefined,
+    cleaningLists: [],
     isModifying: false
   },
   action

@@ -52,12 +52,14 @@ class CleaningSection extends React.Component {
   addNewTask = event => {
     event.preventDefault();
     const name = event.target.elements.newTask.value;
-    this.props.isLoading(true);
-    api.addTask(name, this.props.id).then(res => {
-      this.props.isLoading(false);
-      this.props.actions.addTask(res.data, this.props.sectionNumber);
-    });
-    event.target.elements.newTask.value = '';
+    if (name !== '') {
+      this.props.isLoading(true);
+      api.addTask(name, this.props.id).then(res => {
+        this.props.isLoading(false);
+        this.props.actions.addTask(res.data, this.props.sectionNumber);
+      });
+      event.target.elements.newTask.value = '';
+    }
   };
 
   deleteSection = event => {
@@ -95,21 +97,25 @@ class CleaningSection extends React.Component {
   render() {
     const { name, responsibleUser, cleaningTasks } = this.props.list;
     const { sectionNumber } = this.props;
-    console.log('responsibleUser', responsibleUser); //TODO hvordan blir dette når man legger til bruker?
     return (
       <div className={'cleaning-section'}>
         <Table>
           <thead>
             <tr>
-              <th>{name}</th>
               <th>
-                Responsible: {responsibleUser ? responsibleUser : 'Not set'}
+                <div className="flex-row">
+                  <p className="small-margin-right">{name}</p>
+                  {responsibleUser ? responsibleUser : null}
+                </div>
               </th>
-              <th>
-                {this.props.cleaningListsReducer.isModifying ? (
-                  <Button onClick={this.deleteSection}> delete </Button>
-                ) : null}
-              </th>
+
+              {this.props.cleaningListsReducer.isModifying ? (
+                <th>
+                  <Button size="sm" onClick={this.deleteSection}>
+                    Slett
+                  </Button>
+                </th>
+              ) : null}
             </tr>
           </thead>
 
@@ -117,13 +123,12 @@ class CleaningSection extends React.Component {
           {this.props.cleaningListsReducer.isModifying ? (
             <thead>
               <tr>
-                <td />
                 <td>
                   <form className={'remove_padding'} onSubmit={this.addNewTask}>
                     {FieldGroup({
                       id: 'newTask',
                       type: 'section',
-                      placeholder: 'New task'
+                      placeholder: 'Legg til ny oppgave'
                     })}
                   </form>
                 </td>

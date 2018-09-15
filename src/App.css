@@ -55,12 +55,39 @@ body {
 
 .cleaning-section {
   min-width: 350px;
-  padding: 50px 50px;
+  padding: 30px 50px;
 }
 
 .padding-left {
   padding-left: 30px;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.padding-top{
+  padding-top: 50px;
+}
+
+.padding-bottom{
+  padding-bottom: 50px;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.small-margin-right{
+  margin-right: 15px;
+}
+
+p{
+  margin-bottom: 0px;
+}
+
 
 button {
   cursor: pointer;

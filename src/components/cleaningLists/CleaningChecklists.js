@@ -7,6 +7,7 @@ import CleaningSection from './CleaningSection';
 import { FieldGroup } from '../common/common';
 import * as userActions from '../../actions/userActions';
 import { isLoading } from '../../actions/commonActions';
+import { Button } from 'reactstrap';
 
 class CleaningChecklists extends React.Component {
   constructor(props) {
@@ -51,11 +52,23 @@ class CleaningChecklists extends React.Component {
     }
   };
 
+  editButton = () => (
+    <Button className={"padding-bottom-big"} onClick={() => this.props.actions.setIsModifying(true)}>
+      Legg til seksjoner
+    </Button>
+  );
+
   render() {
     return (
       <div>
-        <p className={'center'}>Seksjonene settes og </p>
+        <p className={'center padding-top'}>
+          Seksjonene roteres og tildeles brukerene hver søndag.
+        </p>
         <div className={'cleaning-lists center-center'}>
+          {this.props.cleaningListsReducer.cleaningLists.length === 0 &&
+          !this.props.cleaningListsReducer.isModifying
+            ? this.editButton()
+            : null}
           {this.props.cleaningListsReducer.cleaningLists
             ? this.sections()
             : null}
@@ -64,7 +77,7 @@ class CleaningChecklists extends React.Component {
               {FieldGroup({
                 id: 'newSection',
                 type: 'section',
-                placeholder: 'New section'
+                placeholder: 'Legg til ny seksjon'
               })}
             </form>
           ) : null}

@@ -6,31 +6,35 @@ const CleaningTask = props => {
   return (
     <tr>
       <th scope="row">
-        <input
-          name="isGoing"
-          type="checkbox"
-          checked={isComplete}
-          onChange={() =>
-            props.checkTask(
-              props.sectionNumber,
-              props.taskNumber,
-              props.id,
-              isComplete
-            )
-          }
-        />
+        <div className={'flex-row'}>
+          <input
+            className="small-margin-right"
+            name="isGoing"
+            type="checkbox"
+            checked={isComplete}
+            onChange={() =>
+              props.checkTask(
+                props.sectionNumber,
+                props.taskNumber,
+                props.id,
+                isComplete
+              )
+            }
+          />{' '}
+          <p>{name}</p>
+        </div>
       </th>
-      <td>{name}</td>
-      <td>
-        {props.showDelete ? (
+
+      {props.showDelete ? (
+        <th>
           <Button
+            size="sm"
             onClick={e => props.deleteTask(props.taskNumber, props.id, e)}
           >
-            {' '}
-            delete{' '}
+            Slett
           </Button>
-        ) : null}
-      </td>
+        </th>
+      ) : null}
     </tr>
   );
 };

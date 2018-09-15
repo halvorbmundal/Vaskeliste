@@ -33,7 +33,7 @@ class AppNavbar extends React.Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand href="/">Vaskelista</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -65,7 +65,7 @@ class AppNavbar extends React.Component {
                   style={{ cursor: 'pointer' }}
                   onClick={() => logOut(this.props.actions.isLoggedIn)}
                 >
-                  Log out
+                  Logg ut
                 </NavLink>
               </NavItem>
             </Nav>
