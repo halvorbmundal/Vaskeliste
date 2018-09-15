@@ -1,6 +1,6 @@
 import axios from 'axios';
-//const hosturl = 'http://localhost:8080/';
-const hosturl = 'http://142.93.39.124:8090/';
+//const hosturl = 'http://127.0.0.1:5000/';
+const hosturl = 'http://209.97.191.116:5000/';
 
 function getConfig() {
   return {
