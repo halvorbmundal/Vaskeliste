@@ -49,7 +49,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(Arrays.asList("http://127.0.0.1:3000", "http://209.97.191.116:3000", "http://vaskelista.no"));
+        config.setAllowedOrigins(Arrays.asList("http://127.0.0.1:3000", "http://209.97.191.116:3000", "http://vaskelista.no", "http://www.vaskelista.no/"));
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         config.addExposedHeader("Authorization");
