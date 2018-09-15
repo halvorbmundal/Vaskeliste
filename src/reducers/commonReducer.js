@@ -5,7 +5,7 @@ export default function userReducer(
   action
 ) {
   switch (action.type) {
-    case "IS_LOADING":
+    case 'IS_LOADING':
       state = { ...state, isLoading: action.payload };
       break;
     default:

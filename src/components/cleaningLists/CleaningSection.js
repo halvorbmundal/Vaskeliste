@@ -1,5 +1,5 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 import {
   Button,
   Dropdown,
@@ -7,13 +7,13 @@ import {
   DropdownMenu,
   DropdownToggle,
   Table
-} from "reactstrap";
-import { bindActionCreators } from "redux";
-import * as cleaningListsActions from "../../actions/cleaningListsActions";
-import * as api from "../../api";
-import { FieldGroup } from "../common/common";
-import { isLoading } from "../../actions/commonActions";
-import CleaningTask from "./CleaningTask";
+} from 'reactstrap';
+import { bindActionCreators } from 'redux';
+import * as cleaningListsActions from '../../actions/cleaningListsActions';
+import * as api from '../../api';
+import { FieldGroup } from '../common/common';
+import { isLoading } from '../../actions/commonActions';
+import CleaningTask from './CleaningTask';
 
 class CleaningSection extends React.Component {
   constructor(props) {
@@ -57,7 +57,7 @@ class CleaningSection extends React.Component {
       this.props.isLoading(false);
       this.props.actions.addTask(res.data, this.props.sectionNumber);
     });
-    event.target.elements.newTask.value = "";
+    event.target.elements.newTask.value = '';
   };
 
   deleteSection = event => {
@@ -78,15 +78,13 @@ class CleaningSection extends React.Component {
     });
   };
 
-
-
   dropdown = () => (
     <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
       <DropdownToggle caret>Who is responsible?</DropdownToggle>
       <DropdownMenu>
         {this.props.usersInCollective.map(user => (
           <div key={user.id}>
-            <DropdownItem onClick={()=> null}>{user.username}</DropdownItem>
+            <DropdownItem onClick={() => null}>{user.username}</DropdownItem>
             <DropdownItem divider />
           </div>
         ))}
@@ -97,19 +95,15 @@ class CleaningSection extends React.Component {
   render() {
     const { name, responsibleUser, cleaningTasks } = this.props.list;
     const { sectionNumber } = this.props;
-    console.log("responsibleUser", responsibleUser); //TODO hvordan blir dette når man legger til bruker?
+    console.log('responsibleUser', responsibleUser); //TODO hvordan blir dette når man legger til bruker?
     return (
-      <div className={"cleaning-section"}>
+      <div className={'cleaning-section'}>
         <Table>
           <thead>
             <tr>
               <th>{name}</th>
               <th>
-                {this.props.cleaningListsReducer.isModifying
-                  ? this.dropdown()
-                  : responsibleUser
-                    ? responsibleUser
-                    : ""}
+                Responsible: {responsibleUser ? responsibleUser : 'Not set'}
               </th>
               <th>
                 {this.props.cleaningListsReducer.isModifying ? (
@@ -125,11 +119,11 @@ class CleaningSection extends React.Component {
               <tr>
                 <td />
                 <td>
-                  <form className={"remove_padding"} onSubmit={this.addNewTask}>
+                  <form className={'remove_padding'} onSubmit={this.addNewTask}>
                     {FieldGroup({
-                      id: "newTask",
-                      type: "section",
-                      placeholder: "New task"
+                      id: 'newTask',
+                      type: 'section',
+                      placeholder: 'New task'
                     })}
                   </form>
                 </td>

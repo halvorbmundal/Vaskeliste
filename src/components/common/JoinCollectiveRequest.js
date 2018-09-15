@@ -1,6 +1,6 @@
-import {Button, Modal, ModalBody, ModalHeader} from 'reactstrap';
+import { Button, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import React from 'react';
-import {acceptRequest} from '../../api';
+import { acceptRequest } from '../../api';
 
 const JoinCollectiveRequest = ({ hasRequests, user, removeRequest }) => (
   <Modal isOpen={hasRequests}>

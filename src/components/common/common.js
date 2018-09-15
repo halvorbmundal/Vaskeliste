@@ -1,5 +1,5 @@
 import React from 'react';
-import {FormGroup, Input, Label} from 'reactstrap';
+import { FormGroup, Input, Label } from 'reactstrap';
 
 export function FieldGroup({ label, ...props }) {
   return (
@@ -11,6 +11,6 @@ export function FieldGroup({ label, ...props }) {
 }
 
 export function logOut(loggedIn) {
-  localStorage.setItem("id_token", "");
+  localStorage.setItem('id_token', '');
   loggedIn(false);
 }

@@ -1,49 +1,48 @@
 export function setCleaninglist(cleaninglist) {
-  return{
+  return {
     type: 'SET_CLEANINGLIST',
-    payload: cleaninglist,
+    payload: cleaninglist
   };
 }
 
 export function checkTask(sectionNumber, taskNumber) {
-  return{
+  return {
     type: 'CHECK_TASK',
-    payload: {sectionNumber, taskNumber}
+    payload: { sectionNumber, taskNumber }
   };
 }
 
 export function setIsModifying(boolean) {
-  return{
+  return {
     type: 'SET_IS_MODIFYING',
     payload: boolean
   };
 }
 
 export function addSection(section) {
-  return{
+  return {
     type: 'ADD_SECTION',
     payload: section
   };
 }
 
 export function addTask(task, sectionNumber) {
-  return{
+  return {
     type: 'ADD_TASK',
-    payload: {task, sectionNumber}
+    payload: { task, sectionNumber }
   };
 }
 
 export function deleteSection(sectionNumber) {
-  return{
+  return {
     type: 'DELETE_SECTION',
     payload: sectionNumber
   };
 }
 
 export function deleteTask(sectionNumber, taskNumber) {
-  return{
+  return {
     type: 'DELETE_TASK',
-    payload: {taskNumber, sectionNumber}
+    payload: { taskNumber, sectionNumber }
   };
 }
-

@@ -40,7 +40,6 @@ body {
   font-size: large;
 }
 
-
 .split {
   display: flex;
   flex-direction: row;
@@ -48,23 +47,28 @@ body {
   align-items: center;
 }
 
-.cleaning-section{
-  max-width: 300px;
-}
-
-.cleaning-lists{
+.cleaning-lists {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
-button{
+.cleaning-section {
+  min-width: 350px;
+  padding: 50px 50px;
+}
+
+.padding-left {
+  padding-left: 30px;
+}
+
+button {
   cursor: pointer;
 }
 
 @media {
-  .log-in-box{
+  .log-in-box {
     min-width: 270px;
     min-height: 300px;
   }
 }
-

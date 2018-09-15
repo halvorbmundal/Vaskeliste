@@ -1,6 +1,6 @@
 export function isLoading(bool) {
-  return{
+  return {
     type: 'IS_LOADING',
-    payload: bool,
+    payload: bool
   };
 }

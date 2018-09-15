@@ -28,7 +28,7 @@ export default function userReducer(
         isAccepted: action.payload.acceptedInCollective,
         isCollectiveAdmin: action.payload.collectiveAdmin,
         collective:
-          action.payload.collective === null && action.payload.collective
+          action.payload.collective === null || action.payload.collective
             ? undefined
             : action.payload.collective.name,
         hasCollective: action.payload.collective !== null

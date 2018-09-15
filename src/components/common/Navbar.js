@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Button,
   Collapse,
@@ -8,12 +8,12 @@ import {
   NavbarToggler,
   NavItem,
   NavLink
-} from "reactstrap";
-import { logOut } from "./common";
-import { bindActionCreators } from "redux";
-import * as userActions from "../../actions/userActions";
-import * as cleaningListsActions from "../../actions/cleaningListsActions";
-import connect from "react-redux/es/connect/connect";
+} from 'reactstrap';
+import { logOut } from './common';
+import { bindActionCreators } from 'redux';
+import * as userActions from '../../actions/userActions';
+import * as cleaningListsActions from '../../actions/cleaningListsActions';
+import connect from 'react-redux/es/connect/connect';
 
 class AppNavbar extends React.Component {
   constructor(props) {
@@ -39,9 +39,17 @@ class AppNavbar extends React.Component {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 {this.props.isModifying ? (
-                  <Button onClick={() => this.props.listActions.setIsModifying(false)}>Stop redigering</Button>
+                  <Button
+                    onClick={() => this.props.listActions.setIsModifying(false)}
+                  >
+                    Stop redigering
+                  </Button>
                 ) : (
-                  <Button onClick={() => this.props.listActions.setIsModifying(true)}>Rediger vaskelister</Button>
+                  <Button
+                    onClick={() => this.props.listActions.setIsModifying(true)}
+                  >
+                    Rediger vaskelister
+                  </Button>
                 )}
               </NavItem>
               <NavItem>
@@ -54,7 +62,7 @@ class AppNavbar extends React.Component {
               </NavItem>
               <NavItem>
                 <NavLink
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: 'pointer' }}
                   onClick={() => logOut(this.props.actions.isLoggedIn)}
                 >
                   Log out

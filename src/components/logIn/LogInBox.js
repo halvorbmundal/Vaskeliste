@@ -69,7 +69,7 @@ class LogInBox extends React.Component {
           </form>
         </div>
 
-        <p>Dette er en nettisde for å for å dele vaskeoppgaver i et kollektiv</p>
+        <p>Dette er en nettisde for å for å dele vaskeoppgaver i et kollektiv.</p>
 
         <Modal
           animation={false}

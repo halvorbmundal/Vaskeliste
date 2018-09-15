@@ -1,12 +1,12 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as api from '../../api/index';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import * as cleaningListsActions from '../../actions/cleaningListsActions';
 import CleaningSection from './CleaningSection';
-import {FieldGroup} from '../common/common';
+import { FieldGroup } from '../common/common';
 import * as userActions from '../../actions/userActions';
-import {isLoading} from '../../actions/commonActions';
+import { isLoading } from '../../actions/commonActions';
 
 class CleaningChecklists extends React.Component {
   constructor(props) {
@@ -29,33 +29,46 @@ class CleaningChecklists extends React.Component {
 
   sections = () =>
     this.props.cleaningListsReducer.cleaningLists.map((list, i) => (
-      <CleaningSection key={list.id} id={list.id} list={list} sectionNumber={i} getData={this.getSections}/>
+      <CleaningSection
+        key={list.id}
+        id={list.id}
+        list={list}
+        sectionNumber={i}
+        getData={this.getSections}
+      />
     ));
 
-  addNewSection = (event) => {
+  addNewSection = event => {
     event.preventDefault();
     const name = event.target.elements.newSection.value;
-    this.props.isLoading(true);
-    api.addSection(name).then(res => {
-      this.props.isLoading(false);
-      this.props.actions.addSection(res.data);
-    });
-    event.target.elements.newSection.value="";
+    if (name !== '') {
+      this.props.isLoading(true);
+      api.addSection(name).then(res => {
+        this.props.isLoading(false);
+        this.props.actions.addSection(res.data);
+      });
+      event.target.elements.newSection.value = '';
+    }
   };
 
   render() {
     return (
-      <div className={"cleaning-lists center-center"}>
-        {this.props.cleaningListsReducer.cleaningLists ? this.sections() : null}
-        {this.props.cleaningListsReducer.isModifying ? (
-          <form onSubmit={this.addNewSection}>
-            {FieldGroup({
-              id: "newSection",
-              type: "section",
-              placeholder: "New section"
-            })}
-          </form>
-        ) : null}
+      <div>
+        <p className={'center'}>Seksjonene settes og </p>
+        <div className={'cleaning-lists center-center'}>
+          {this.props.cleaningListsReducer.cleaningLists
+            ? this.sections()
+            : null}
+          {this.props.cleaningListsReducer.isModifying ? (
+            <form onSubmit={this.addNewSection} className={'padding-left'}>
+              {FieldGroup({
+                id: 'newSection',
+                type: 'section',
+                placeholder: 'New section'
+              })}
+            </form>
+          ) : null}
+        </div>
       </div>
     );
   }
