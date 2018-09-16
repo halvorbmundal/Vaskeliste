@@ -48,7 +48,7 @@ class AppNavbar extends React.Component {
                   <Button
                     onClick={() => this.props.listActions.setIsModifying(true)}
                   >
-                    Rediger vaskelister
+                    Rediger vaskelistene
                   </Button>
                 )}
               </NavItem>

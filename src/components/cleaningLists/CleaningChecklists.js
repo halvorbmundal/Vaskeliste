@@ -53,7 +53,10 @@ class CleaningChecklists extends React.Component {
   };
 
   editButton = () => (
-    <Button className={"padding-bottom-big"} onClick={() => this.props.actions.setIsModifying(true)}>
+    <Button
+      className={'padding-bottom-big'}
+      onClick={() => this.props.actions.setIsModifying(true)}
+    >
       Legg til seksjoner
     </Button>
   );
@@ -61,9 +64,17 @@ class CleaningChecklists extends React.Component {
   render() {
     return (
       <div>
-        <p className={'center padding-top'}>
-          Seksjonene roteres og tildeles brukerene hver søndag.
-        </p>
+        {this.props.cleaningListsReducer.isModifying ? (
+          <div>
+            <p className={'center padding-top'}>
+              Her kan dere dele kollektivet inn i seksjoner og skrive ned
+              oppgavene for hver seksjon.
+            </p>
+            <p className={'center'}>
+              Seksjonene roteres og tildeles brukerene hver søndag.
+            </p>
+          </div>
+        ) : null}
         <div className={'cleaning-lists center-center'}>
           {this.props.cleaningListsReducer.cleaningLists.length === 0 &&
           !this.props.cleaningListsReducer.isModifying

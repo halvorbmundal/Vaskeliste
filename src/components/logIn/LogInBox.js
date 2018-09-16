@@ -54,18 +54,18 @@ class LogInBox extends React.Component {
             {FieldGroup({
               id: 'formControlsUsername',
               type: 'username',
-              label: 'Username',
-              placeholder: 'Enter username'
+              label: 'Brukernavn',
+              placeholder: 'Fyll inn brukernavn'
             })}
             {FieldGroup({
               id: 'formControlsPassword',
-              label: 'Password',
+              label: 'Passord',
               type: 'password',
-              placeholder: 'Enter password'
+              placeholder: 'Fyll inn passord'
             })}
             <div className={'split'}>
               <a onClick={this.toggle} style={{ cursor: 'pointer' }}>
-                Create account
+                Lag bruker
               </a>
               <a> </a>
               <Button type="submit">Submit</Button>
