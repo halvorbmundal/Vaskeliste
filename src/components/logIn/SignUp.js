@@ -23,9 +23,17 @@ class SignUp extends React.Component {
     const password2 = event.target.elements.formControlsPassword2.value;
     if (password1 === password2) {
       if (this.validateInput(username, password1)) {
-        signUp(username, password1, email);
-        this.props.close();
-        window.alert('User created');
+        signUp(username, password1, email)
+          .then(() => {
+            this.props.close();
+            window.alert('User created');
+          })
+          .catch(
+            err =>
+              err.response.data.message === 'Username already exists'
+                ? window.alert('Username already exist')
+                : window.alert('Something went wrong')
+          );
       } else {
         this.invalidInput();
       }
