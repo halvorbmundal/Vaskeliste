@@ -22,6 +22,9 @@ public class ApplicationUser {
     public String username;
 
     @Column
+    public String email;
+
+    @Column
     private String password;
 
     @Column

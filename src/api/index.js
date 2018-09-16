@@ -35,11 +35,12 @@ export function logIn(username, password) {
 }
 
 //TODO add check if username is taken
-export function signUp(username, password) {
+export function signUp(username, password, email) {
   const url = hosturl + 'user/sign-up';
   return axios.post(url, {
     username: username,
-    password: password
+    password: password,
+    email: email
   });
 }
 
